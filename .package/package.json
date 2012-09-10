@@ -1,0 +1,32 @@
+{
+  "title":"Autologin component",
+  "description":"Maakt generatie van autologin-links mogelijk.",
+  "type":"manual",
+  "versions":
+  [
+    {
+      "version":"1.0",
+      "date":"2012-09-10",
+      "description":"Autologin component gecre&euml;erd.",
+      "changes":[
+        {
+          "title":"Wachtwoorden worden beschermd",
+          "description":"Bij het aanmaken van de autologin-links wordt in geen enkel geval het wachtwoord daarin verwerkt. Dit zorgt ervoor dat het wachtwoord van de gebruiker geheim blijft."
+        },
+        {
+          "title":"Geldigheidsduur is instelbaar",
+          "description":"Per aangemaakte link kan worden ingesteld hoe lang deze geldig is. Dit zorgt ervoor dat wanneer een verouderde link in verkeerde handen valt hij niet bruikbaar is. Hiermee wordt het risico van misbruik verlaagt. Advies: probeer deze geldigheid zo kort mogelijk te houden."
+        },
+        {
+          "title":"Geen links voor beheerders",
+          "description":"Dit component zal geen autologin-links aanmaken of toestaan voor gebruikers met een beheerders account. Dit omdat het veiligheidsrisico van een uitgelekte autologin-link voor beheerders account in alle gevallen onacceptabel is."
+        },
+        {
+          "title":"Meer over de veiligheid van dit component",
+          "description":"Voor meer informatie over de veiligheidsrisico's en overwegingen van dit component kunt u kijken op de Tuxion wiki.",
+          "url":"http://wiki.tuxion.nl/index.php/Overwegingen_gebruik_autologin-link"
+        }
+      ]
+    }
+  ]
+}
