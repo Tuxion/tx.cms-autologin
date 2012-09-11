@@ -49,12 +49,23 @@ class Actions extends \dependencies\BaseComponent
           ->join('UserInfo', $UI)
           ->where("(`$UI.status` & 1)", '>', 0)
           ->execute_single()
-          ->is('empty', function()use(&$invalid_link){
+          
+          //Check for missing user.
+          ->is('empty', function()use($link, &$invalid_link){
             $invalid_link = true;
             tx('Logging')->log('Autologin', 'Failed attempt', 'User ID of the autologin-link ('.$link->user_id.') does not resolve to a valid and active user.');
+          })
+          
+          //Otherwise...
+          ->failure(function($user)use($link, &$invalid_link){
+            
+            //When user is admin
+            $user->is_administrator->is('true', function()use($link, &$invalid_link){
+              $invalid_link = true;
+              tx('Logging')->log('Autologin', 'Failed attempt', 'User ID of the autologin-link ('.$link->user_id.') resolves to a user with administrator rights and was denied the autologin.');
+            });
+            
           });
-        
-        throw new \Exception('TODO check admin level');
         
       }
       
